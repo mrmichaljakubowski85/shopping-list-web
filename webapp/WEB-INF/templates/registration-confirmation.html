@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="common/head-section :: headSection ('Registration confirmation')"/>
+
+<body>
+<div class="container py-3">
+    <h3>User registered successfully!</h3>
+    <a class="btn btn-outline-success mt-5" th:href="@{/login}">Login with new user</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="loggedInUserInfo" class="row justify-content-end align-items-center mb-4">
+    <div class="col-auto">
+        Hello <b th:text="${session.userFullName}"/> !
+    </div>
+    <div class="col-auto">
+        <form id="logoutForm" action="#" th:action="@{/logout}" method="POST">
+            <button type="submit" class="btn btn-outline-secondary btn-sm">Logout</button>
+        </form>
+    </div>
+</div>
+
+
+<div th:fragment="logInButton" class="row justify-content-end mb-4">
+    <div class="col-auto">
+        <a class="btn btn-outline-info btn-sm" th:href="@{/login}">Login</a>
+    </div>
+</div>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <title>Product details</title>
+</head>
+<body>
+
+<div class="container py-3">
+
+    <div th:replace="common/header :: loggedInUserInfo"></div>
+
+    <h3>Product details</h3>
+    <hr>
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Title</h6>
+            <p class="card-text"><b th:text="${product.title}"/></p>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Description</h6>
+            <p class="card-text"><b th:text="${#strings.isEmpty(product.description)} ? '---' : ${product.description}"/></p>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Quantity</h6>
+            <p class="card-text"><b th:text="${#strings.isEmpty(product.quantity)} ? '---' : ${product.description}"/></p>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Unit</h6>
+            <p class="card-text"><b th:text="${#strings.isEmpty(product.unit)} ? '---' : ${product.description}"/></p>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Marked</h6>
+            <p class="card-text"><input type="checkbox" th:checked="${product.marked}" onclick="return false;" /></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-auto">
+            <form action="#" th:action="@{/product/edit}" method="POST">
+                <input type="hidden" name="productId" th:value="${product.id}" />
+                <button type="submit" class="btn btn-success">Edit</button>
+            </form>
+        </div>
+        <div class="col-auto">
+            <form action="#" th:action="@{/product/delete}" method="POST">
+                <input type="hidden" name="productId" th:value="${product.id}" />
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+
+    <div th:replace="common/navigation-section :: backToProductList"/>
+
+</div>
+
+</body>
+</html>

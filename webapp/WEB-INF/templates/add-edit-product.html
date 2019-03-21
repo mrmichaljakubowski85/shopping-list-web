@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block th:if="${product.id != null}">
+    <div th:replace="common/head-section :: headSection ('Edit Product')" />
+</th:block>
+<th:block th:if="${product.id == null}">
+    <div th:replace="common/head-section :: headSection ('Add new Product')"/>
+</th:block>
+
+<body>
+
+<div class="container py-3">
+
+    <div th:replace="common/header :: loggedInUserInfo"/>
+
+    <h3 th:text="${product.id != null ? 'Edit Product' : 'Add new Product'}"/>
+    <hr>
+
+    <form action="#" th:action="@{/product/save}" th:object="${product}" method="POST">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" th:field="*{title}" class="form-control" th:errorclass="is-invalid"/>
+            <div th:if="${#fields.hasErrors('title')}" class="invalid-feedback" th:errors="*{title}"/>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" th:field="*{description}" class="form-control" th:errorclass="is-invalid"/>
+            <div th:if="${#fields.hasErrors('description')}" class="invalid-feedback" th:errors="*{description}"/>
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="text" th:field="*{quantity}" class="form-control" th:errorclass="is-invalid"/>
+            <div th:if="${#fields.hasErrors('quantity')}" class="invalid-feedback" th:errors="*{quantity}"/>
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="unit">Unit</label>
+            <input type="text" th:field="*{unit}" class="form-control" th:errorclass="is-invalid"/>
+            <div th:if="${#fields.hasErrors('unit')}" class="invalid-feedback" th:errors="*{unit}"/>
+        </div>
+
+        <button type="submit" class="btn btn-outline-success">Save</button>
+    </form>
+
+    <div th:replace="common/navigation-section :: backToProductList"/>
+
+</div>
+
+</body>
+</html>

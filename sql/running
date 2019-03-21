@@ -1,0 +1,16 @@
+1) Run scripts:
+    a) psql -h localhost -d postgres -p 5432 -U postgres -a -f 01_user_database.sql
+    b) psql -h localhost -d shopping_list -p 5432 -U sl_user -a -f 02_db_schema.sql
+    c) psql -h localhost -d shopping_list -p 5432 -U sl_user -a -f 03_roles.sql
+    d) psql -h localhost -d shopping_list -p 5432 -U sl_user -a -f 04_example_users_products.sql
+
+or if you are logged in to psql:
+- for absolute path: \i script.sql
+- for relative path: \ir ddt.sql
+
+2) Build and run with maven command: `mvn jetty:run-war`
+
+3) URLs:
+- Open http://localhost:8080/shopping-list/ site for web version
+- REST services are placed under http://localhost:8080/shopping-list/api/v1/**
+- Added example user: login/password

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="common/head-section :: headSection ('Error')"/>
+</head>
+<body>
+<div class="container py-3">
+    <h3>Access Denied - You are not authorized to access this resource</h3>
+    <a class="nav-link active" href="@{/product/list}">Back to Products</a>
+</div>
+</body>
+</html>
